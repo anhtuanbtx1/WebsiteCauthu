@@ -1,0 +1,132 @@
+﻿@model WebGiaiTri.Models.HomeModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper content-wrapper animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Theo dõi danh sách</h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="morris-donut-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="label" for="form-box">Mã bảo mật</label>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <input class="form-control" autocomplete="off" placeholder="Mã bảo mật" name="Captcha" />
+                    </div>
+                    <div class="col-xs-5" style="padding-left: 0">
+                        <img src="/Captcha?width=120&height=35" />
+                        <i class="fa fa-paint-roller" id="refreshCaptcha"></i>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+</div>
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
+        <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+        <link rel="stylesheet" href="~/lib/morrisjs/morris.css" />
+    </environment>
+}
+
+@section Scripts {
+
+    <environment names="Development">
+        <script src="~/lib/raphael/raphael.js"></script>
+        <script src="~/lib/morrisjs/morris.js"></script>
+    </environment>
+
+    <environment names="Development,Staging,Production">
+        <script src="~/lib/dataTables/datatables.min.js"></script>
+        <script src="~/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+        <script src="~/lib/toastr/toastr.js"></script>
+        <script src="~/lib/toastr/toastr.min.js"></script>
+        <script src="~/lib/raphael/raphael-min.js"></script>
+        <script src="~/lib/morrisjs/morris.min.js"></script>
+    </environment>
+
+    @if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "warning")
+    {
+        <script type="text/javascript">
+            toastr.warning('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "error")
+    {
+        <script type="text/javascript">
+            toastr.error('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "success")
+    {
+        <script type="text/javascript">
+            toastr.success('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+
+   
+        <style>
+            #refreshCaptcha {
+                margin-left: 5px;
+            }
+
+                #refreshCaptcha:hover {
+                    cursor: pointer;
+                    color: blue;
+                }
+
+            .validation-summary-errors ul, .validation-summary-warning ul {
+                padding-left: 15px;
+            }
+
+            .validation-summary-warning ul {
+                color: #6f6200;
+            }
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#refreshCaptcha").on("click", function () {
+                    var img = $(this).parent().children("img")[0];
+                    img.src = "/Captcha?width=120&height=35&t=" + (new Date().getTime());
+                });
+            });
+        </script>
+   
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Morris.Donut({
+                element: 'morris-donut-chart',
+                data: [
+                @foreach (var item in @Model.ListTypeOfPlayer)
+                    {
+                        @:{ label: "@(item.Name.ToString())", value: '@(item.Value)', labelColor: '#87d6c6' },
+                    }
+                    ],
+                resize: true
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#refreshCaptcha").on("click", function () {
+                var img = $(this).parent().children("img")[0];
+                img.src = "/Captcha?width=120height=35&t=" + (new Date().getTime());
+            });
+        });
+    </script>
+}
+

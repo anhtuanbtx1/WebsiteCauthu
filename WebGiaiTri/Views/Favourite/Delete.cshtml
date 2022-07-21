@@ -1,0 +1,20 @@
+﻿@model Domain.Entitites.Favourite
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" value="@Model.Id" id="Id" name="Id" /> |
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

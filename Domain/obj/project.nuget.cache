@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "z3TfVuq1tN3G+Cm+nR6ETrBxdCAGRiww4buSrBv3WL5mL4M/uJtaqm0lpfOEVwPFh+fNnY3rTVUuRA0HcDvh4A==",
+  "success": true,
+  "projectFilePath": "E:\\repos\\WebGiaiTri\\Domain\\Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\jquery\\1.6.3\\jquery.1.6.3.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\toastr\\2.1.1\\toastr.2.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

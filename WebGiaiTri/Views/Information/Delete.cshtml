@@ -1,0 +1,53 @@
+﻿@model Domain.Entitites.Information
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Descreption)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Descreption)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Club)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Club)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Number)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Number)
+            </dd>
+        </dl>
+
+        <form asp-action="DeleteChanged">
+            <input type="hidden" id="Id" name="Id" value="@Model.Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>
+    </div>

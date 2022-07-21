@@ -1,0 +1,51 @@
+﻿#page-wrapper {
+    margin-left: 0px;
+    background-color: #e6e6fa;
+}
+
+#winformPadding {
+    padding: 0 !important;
+}
+
+.wrapper-content {
+    padding: 0px 0px 0px !important;
+}
+
+.wrapper {
+    padding: 0 0px !important;
+}
+
+.ibox-content {
+    background-color: #e6e6fa;
+}
+
+.ibox-title {
+    background-color: #99b3d1;
+    color:black;
+}
+
+.dataTables_wrapper {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.form-control,
+.single-line {
+    border: 1px solid #3e443c !important;
+}
+
+.btn-primary, btn-success, .btn-white, .btn-danger, .page-link {
+    color: black !important;
+    background-color: #e1e1e1 !important;
+    border-color: #3e443c !important;
+}
+
+    .btn-primary:hover, btn-success:hover, .btn-white:hover, .btn-danger:hover, .page-link:hover {
+        color: black !important;
+        background-color: #e5f0fb !important;
+        border-color: #548fc0 !important;
+    }
+
+.ibox-tools a.btn-primary {
+    color: black !important;
+}

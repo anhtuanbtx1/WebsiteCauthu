@@ -1,0 +1,105 @@
+﻿@model Domain.Entitites.Information
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            Chỉnh sửa
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3>Tạo thông tin</h3>
+                        </div>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Descreption" class="control-label"></label>
+                                <input asp-for="Descreption" class="form-control" />
+                                <span asp-validation-for="Descreption" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Club" class="control-label"></label>
+                                <input asp-for="Club" class="form-control" />
+                                <span asp-validation-for="Club" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Image" class="control-label"></label>
+                                <input asp-for="Image" type="file" class="btn btn-primary" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Number" class="control-label"></label>
+                                <input asp-for="Number" class="form-control" />
+                                <span asp-validation-for="Number" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                <div class="icheck-success d-inline">
+                                    <input asp-for="Status" type="checkbox" checked id="checkboxsucces" />
+                                    <label for="checkboxsucces"></label>
+                                </div>
+
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </section>
+</div>
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
+        <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    </environment>
+}
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/lib/dataTables/datatables.min.js"></script>
+        <script src="~/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+        <script src="~/lib/toastr/toastr.js"></script>
+        <script src="~/lib/toastr/toastr.min.js"></script>
+    </environment>
+    @if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "warning")
+    {
+        <script type="text/javascript">
+            toastr.warning('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "error")
+    {
+        <script type="text/javascript">
+            toastr.error('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "success")
+    {
+        <script type="text/javascript">
+            toastr.success('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+}
+

@@ -1,0 +1,100 @@
+﻿@model Domain.Entitites.Pricetranfer
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            Chỉnh sửa
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-success">
+                        <div class="card-header">
+                            <h3>Tạo thông tin</h3>
+                        </div>
+                        <form asp-action="CreateSaved">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PriceBuy" class="control-label"></label>
+                                <input asp-for="PriceBuy" type="file" class="btn btn-primary" />
+                                <span asp-validation-for="PriceBuy" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PriceSell" class="control-label"></label>
+                                <input asp-for="PriceSell" class="form-control" />
+                                <span asp-validation-for="PriceSell" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Ovr" class="control-label"></label>
+                                <input asp-for="Ovr" class="form-control" />
+                                <span asp-validation-for="Ovr" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Image" class="control-label"></label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input asp-for="Image" type="file" class="btn-primary" />
+                                        <span asp-validation-for="Image" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </section>
+</div>
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
+        <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/lib/dataTables/datatables.min.js"></script>
+        <script src="~/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+        <script src="~/lib/toastr/toastr.js"></script>
+        <script src="~/lib/toastr/toastr.min.js"></script>
+    </environment>
+    @if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "warning")
+    {
+        <script type="text/javascript">
+            toastr.warning('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "error")
+    {
+        <script type="text/javascript">
+            toastr.error('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+    else if (!string.IsNullOrEmpty(ViewBag.Value) && ViewBag.Type == "success")
+    {
+        <script type="text/javascript">
+            toastr.success('@ViewBag.Status', '@ViewBag.Value')
+        </script>
+    }
+}
