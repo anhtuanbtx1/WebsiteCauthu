@@ -4,6 +4,9 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@*<style>
+    .mauA {color: red;}
+</style>*@
 @using (Html.BeginForm("Index", "Information", FormMethod.Post))
 {
     <div class="wrapper content-wrapper animated fadeInRight">
@@ -28,6 +31,9 @@
                                         @Html.DisplayNameFor(model => model.Descreption)
                                     </th>
                                     <th>
+                                        <span class="mauA">a</span>
+                                        <span class="mauB">b</span>
+
                                         @Html.DisplayNameFor(model => model.Club)
                                     </th>
                                     <th>
@@ -187,7 +193,12 @@
                                                         var url = "TypeOfDevices/Details/" + data[0];
                                                         window.location.href = url;
                 });
-                                                });
+            });
+            $('#dataTables-list thead th').eq(2).find('span').forEach(el => {
+                if (el.text() == 'a') {
+                    el.css('color', 'red');
+                } 
+            })
         </script>
     }
 
